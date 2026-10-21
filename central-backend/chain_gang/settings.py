@@ -125,14 +125,9 @@ WSGI_APPLICATION = 'chain_gang.wsgi.application'
 
 #if "DB_USER" in os.environ:
 DATABASES = {
-
     'default': {
-    'ENGINE': 'django.db.backends.mysql',
-    'NAME': 'femr_central',
-    'USER': os.getenv("DB_USER"),
-    'PASSWORD': os.getenv("DB_CREDS"),
-    'HOST': os.getenv("DB_HOST"),
-    'PORT': os.getenv("DB_PORT"),
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 # else:
@@ -198,7 +193,7 @@ REST_FRAMEWORK = {
         "rest_framework.authentication.BasicAuthentication",
         "rest_framework.authentication.SessionAuthentication",
     ],
-    'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema',
+    'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.openapi.AutoSchema',
     # 'DEFAULT_PARSER_CLASSES': [
     #     'rest_framework.parsers.FormParser',
     #     'rest_framework.parsers.MultiPartParser'
